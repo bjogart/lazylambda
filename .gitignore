@@ -1,0 +1,5 @@
+.vscode/
+*.hl
+*.js
+checkstyle.json
+hxformat.json

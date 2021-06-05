@@ -1,0 +1,28 @@
+{
+    "name": "lazylambda",
+    "url": "https://github.com/BJogart/lazylambda",
+    "license": "MIT",
+    "tags": [
+        "function",
+        "functional",
+        "lambda",
+        "lazy",
+        "sequence",
+        "null-safe",
+        "iterator"
+    ],
+    "description": "Like `using Lambda;` but lazy",
+    "version": "0.0.1",
+    "releasenote": "Initial release",
+    "classPath": "src/",
+    "contributors": [
+        "BJogart"
+    ],
+    "dependencies": {
+        "utest": "1.13.2",
+        "tink_core": "2.0.2",
+        "fount": "",
+        "datum": ""
+    },
+    "main": "tests.RunTests"
+}

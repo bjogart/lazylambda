@@ -1,0 +1,15 @@
+-cp src
+
+--interp
+-main tests.RunTests
+
+-L tink_core
+-L fount
+-L datum
+-L utest
+
+--dce full
+-D analyzer-optimize
+# -D no-inline
+
+--macro nullSafety("lazylambda", Strict)
