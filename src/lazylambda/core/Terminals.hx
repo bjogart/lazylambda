@@ -74,8 +74,7 @@ class Terminals {
 
     public static function groupByIndex<T>(iter: Iterator<T>, toIndex: T -> Int): Array<Option<List<T>>> {
         return iter.fold((it, groups: Array<List<T>>) -> groups.also(groups -> groups.getOrSet(toIndex(it), List.new).add(it)), [])
-            .iterator()
-            .map(group -> group == null ? None : Some(group))
+            .iterMap(group -> group == null ? None : Some(group))
             .toArray();
     }
 
