@@ -8,8 +8,8 @@ class Shorthands {
         return iter.iterator().concat(...iters);
     }
 
-    public static inline function iterConcatIterables<T>(iter: Iterable<T>, ...iterables: Iterable<T>): Iterator<T> {
-        return iter.iterator().concatIterables(...iterables);
+    public static inline function iterConcatWithIterables<T>(iter: Iterable<T>, ...iterables: Iterable<T>): Iterator<T> {
+        return iter.iterator().concatWithIterables(...iterables);
     }
 
     public static inline function iterFilter<T>(iter: Iterable<T>, pred: T -> Bool): Iterator<T> {

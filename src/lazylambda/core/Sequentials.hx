@@ -9,7 +9,7 @@ class Sequentials {
         return new ConcatIterator(iters.prepend(iter).iterator());
     }
 
-    public static inline function concatIterables<T>(iter: Iterator<T>, ...iterables: Iterable<T>): Iterator<T> {
+    public static inline function concatWithIterables<T>(iter: Iterator<T>, ...iterables: Iterable<T>): Iterator<T> {
         return iter.concat(iterables.iterator().flatMap(iterable -> iterable.iterator()));
     }
 

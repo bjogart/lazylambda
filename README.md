@@ -1,6 +1,6 @@
 # Like `using Lambda;` but lazy
 ```haxe
-[[13, 256], [334, 0, 321]].iterConcatIterables([[], [30, 29]])
+[[13, 256], [334, 0, 321]].iterConcatWithIterables([[], [30, 29]])
         .zipWithIterable([2, 0, 0, 5])
         .flatMap(it -> it.key.iterMap(i -> i - it.value))
         .filter(i -> i <= 30)
