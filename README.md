@@ -1,9 +1,8 @@
 # Like `using Lambda;` but lazy
 ```haxe
-[[13, 256], [334, 0, 321]].iterator()
-        .concat([[], [30, 29]].iterator())
-        .zip([2, 0, 0, 5].iterator())
-        .flatMap(it -> it.key.iterator().map(i -> i - it.value))
+[[13, 256], [334, 0, 321]].iterConcatIterables([[], [30, 29]])
+        .zipWithIterable([2, 0, 0, 5])
+        .flatMap(it -> it.key.iterMap(i -> i - it.value))
         .filter(i -> i <= 30)
         .map(i -> i + 65)
         .toStrBy(String.fromCharCode, "Now that's ", "", " evaluation!");
