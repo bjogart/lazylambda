@@ -3,7 +3,7 @@ package lazylambda.core;
 using fount.Core;
 
 @:forward(length, iterator)
-abstract Slice<C, T>(SliceImpl<C, T>) {
+abstract Slice<C, T>(SliceImpl<C, T>) to Iterable<T> {
     public inline function new(col: C, start: Int, length: Int, accessor: (C, Int) -> T) {
         this = new SliceImpl(col, accessor, start, length);
     }
