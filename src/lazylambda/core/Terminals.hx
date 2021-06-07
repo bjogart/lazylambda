@@ -23,6 +23,7 @@ class Terminals {
         return a.cmpBy(b, (t1, t2) -> t1.cmp(t2));
     }
 
+
     public static function cmpBy<T>(a: Iterator<T>, b: Iterator<T>, comparator: (T, T) -> Int): Int {
         while (a.hasNext() && b.hasNext()) {
             final cmp = comparator(a.next(), b.next());
@@ -36,6 +37,7 @@ class Terminals {
             0;
         }
     }
+
 
     public static inline function eq<T: Eq<T>>(a: Iterator<T>, b: Iterator<T>): Bool {
         return a.eqBy(b, (v1, v2) -> v1.eq(v2));
@@ -74,7 +76,8 @@ class Terminals {
 
     public static function groupByIndex<T>(iter: Iterator<T>, toIndex: T -> Int): Array<Option<List<T>>> {
         return iter.fold((it, groups: Array<List<T>>) -> groups.also(groups -> groups.getOrSet(toIndex(it), List.new).add(it)), [])
-            .iterMap(group -> group == null ? None : Some(group))
+            .iterator()
+            .map(group -> group == null ? None : Some(group))
             .toArray();
     }
 

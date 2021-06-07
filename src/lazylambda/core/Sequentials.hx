@@ -9,9 +9,7 @@ class Sequentials {
         return new ConcatIterator(iters.prepend(iter).iterator());
     }
 
-    public static inline function concatWithIterables<T>(iter: Iterator<T>, ...iterables: Iterable<T>): Iterator<T> {
-        return iter.concat(iterables.iterator().flatMap(iterable -> iterable.iterator()));
-    }
+
 
     public static inline function filter<T>(iter: Iterator<T>, pred: T -> Bool): Iterator<T> {
         return new FilterIterator(iter, pred);
@@ -47,10 +45,6 @@ class Sequentials {
 
     public static inline function zip<A, B>(iter1: Iterator<A>, iter2: Iterator<B>): KeyValueIterator<A, B> {
         return new ZipIterator(iter1, iter2);
-    }
-
-    public static inline function zipWithIterable<A, B>(iter: Iterator<A>, iterable: Iterable<B>): KeyValueIterator<A, B> {
-        return new ZipIterator(iter, iterable.iterator());
     }
 
     public static inline function zipWithResult<T, R>(iter: Iterator<T>, fun: T -> R): KeyValueIterator<T, R> {
