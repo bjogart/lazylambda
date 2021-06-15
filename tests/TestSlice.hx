@@ -8,6 +8,7 @@ using lazylambda.Core;
 
 class TestSlice implements ITest {
     static final arr = [0, 1, 2, 3, 4, 5];
+    static final str = "abcdef";
 
     public function new() {}
 
@@ -74,6 +75,73 @@ class TestSlice implements ITest {
 
     function test_array_lift_slice_is_empty_if_end_is_smaller_than_pos() {
         final s = arr.lift(3, 1);
+
+        Assert.equals(0, s.length);
+    }
+
+    function test_string_lift_0_to_length_slice_contains_whole_string() {
+        final s = str.lift(0, str.length);
+
+        Assert.equals(str.length, s.length);
+        for (i in 0...s.length) Assert.equals(str.charCodeAt(i), s[i].unwrap());
+    }
+
+    function test_string_lift_omitting_end_defaults_to_end_of_string() {
+        final s = str.lift(2);
+
+        Assert.equals(str.length - 2, s.length);
+        for (i in 0...s.length) Assert.equals(str.charCodeAt(i + 2), s[i].unwrap());
+    }
+
+    function test_string_lift_slice_lifts_upto_but_not_including_end() {
+        final s = str.lift(0, 2);
+
+        Assert.equals(2, s.length);
+        for (i in 0...s.length) Assert.equals(str.charCodeAt(i), s[i].unwrap());
+    }
+
+    function test_string_lift_endpos_larger_than_string_defaults_to_end_of_string() {
+        final s = str.lift(2, 2 * str.length);
+
+        Assert.equals(str.length - 2, s.length);
+        for (i in 0...s.length) Assert.equals(str.charCodeAt(i + 2), s[i].unwrap());
+    }
+
+    function test_string_lift_negative_pos_indexes_from_end_of_string() {
+        final s = str.lift(-2);
+
+        Assert.equals(2, s.length);
+        for (i in 0...s.length) Assert.equals(str.charCodeAt(str.length - 2 + i), s[i].unwrap());
+    }
+
+    function test_string_lift_negative_pos_smaller_than_string_length_defaults_to_0() {
+        final s = str.lift(-2 * str.length);
+
+        Assert.equals(str.length, s.length);
+        for (i in 0...s.length) Assert.equals(str.charCodeAt(i), s[i].unwrap());
+    }
+
+    function test_string_lift_negative_end_indexes_from_end_of_string() {
+        final s = str.lift(0, -2);
+
+        Assert.equals(str.length - 2, s.length);
+        for (i in 0...s.length) Assert.equals(str.charCodeAt(i), s[i].unwrap());
+    }
+
+    function test_string_lift_negative_end_smaller_than_string_length_defaults_to_0() {
+        final s = str.lift(0, -2 * str.length);
+
+        Assert.equals(0, s.length);
+    }
+
+    function test_string_lift_slice_is_empty_if_pos_exceeds_string_length() {
+        final s = str.lift(str.length + 1);
+
+        Assert.equals(0, s.length);
+    }
+
+    function test_string_lift_slice_is_empty_if_end_is_smaller_than_pos() {
+        final s = str.lift(3, 1);
 
         Assert.equals(0, s.length);
     }

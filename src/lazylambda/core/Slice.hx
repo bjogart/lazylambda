@@ -83,3 +83,29 @@ class ArraySliceTools {
         return new Slice(arr, pos, length, (a, i) -> a[i]);
     }
 }
+
+class StringSliceTools {
+    public static function lift<T>(str: String, pos: Int, ?end: Int): Slice<String, Int> {
+        final pos = if (pos < 0) {
+            (pos + str.length).max(0);
+        } else if (pos >= str.length) {
+            str.length;
+        } else {
+            pos;
+        }
+
+        final end = if (end == null) {
+            str.length;
+        } else if (end < 0) {
+            (end + str.length).max(0);
+        } else if (end >= str.length) {
+            str.length;
+        } else {
+            end;
+        }
+
+        final length = (end - pos).max(0);
+
+        @:nullSafety(Off) return new Slice(str, pos, length, (a, i) -> a.charCodeAt(i));
+    }
+}

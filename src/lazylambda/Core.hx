@@ -10,5 +10,6 @@ typedef RangeIterError = lazylambda.core.RangeIterator.RangeIterError;
 typedef RangeIterator = lazylambda.core.RangeIterator;
 typedef Sequentials = lazylambda.core.Sequentials;
 typedef Slice<C, T> = lazylambda.core.Slice<C, T>;
+typedef StringSliceTools = lazylambda.core.Slice.StringSliceTools;
 typedef Terminals = lazylambda.core.Terminals;
 typedef ZipIterator<A, B> = lazylambda.core.ZipIterator<A, B>;
