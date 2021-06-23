@@ -38,7 +38,7 @@ class TestTerminals implements ITest {
     function test_toRepr() {
         final it = [new Obj(1), new Obj(2), new Obj(3)].iterator();
 
-        Assert.equals("[Obj(1i), Obj(2i), Obj(3i)]", it.toRepr());
+        Assert.equals("[Obj(1i32), Obj(2i32), Obj(3i32)]", it.toRepr());
     }
 
     function test_all_is_false_if_any_item_is_false() {
