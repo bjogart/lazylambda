@@ -161,7 +161,7 @@ class TestTerminals implements ITest {
     }
 
     function test_groupByIndex() {
-        final byParity = 0.rangeTo(5, 2).sure().map(Obj.new).groupByIndex(i -> i.val);
+        final byParity = 0.rangeTo(5, 2).unwrap().map(Obj.new).groupByIndex(i -> i.val);
         final expected = [
             new List().also(l -> l.add(new Obj(0))),
             new List(),
@@ -176,7 +176,7 @@ class TestTerminals implements ITest {
     }
 
     function test_group() {
-        final byParity = 0.rangeTo(5, 2).sure().map(Obj.new).group(obj -> obj, TreeDict.create);
+        final byParity = 0.rangeTo(5, 2).unwrap().map(Obj.new).group(obj -> obj, TreeDict.create);
         final expected = [
             new List().also(l -> l.add(new Obj(0))),
             new List().also(l -> l.add(new Obj(2))),

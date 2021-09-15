@@ -1,6 +1,5 @@
 package lazylambda.core;
 
-using tink.CoreApi;
 using fount.Core;
 using lazylambda.Core;
 
@@ -35,12 +34,12 @@ class Sequentials {
         return new MapIterator(iter, fun);
     }
 
-    public static function rangeTo(start: Int, end: Int, ?step: Int): Outcome<Iterator<Int>, RangeIterError> {
+    public static function rangeTo(start: Int, end: Int, ?step: Int): Result<Iterator<Int>, RangeIterError> {
         final dir = (end - start).sign();
         final step = step == null ? dir : step;
-        if (dir != step.sign()) return Failure(MisalignedStep(start, end, step));
-        if (dir == 0) return Success(new EmptyIterator());
-        return Success(new RangeIterator(start, end, dir, step));
+        if (dir != step.sign()) return Err(MisalignedStep(start, end, step));
+        if (dir == 0) return Ok(new EmptyIterator());
+        return Ok(new RangeIterator(start, end, dir, step));
     }
 
     public static inline function zip<A, B>(iter1: Iterator<A>, iter2: Iterator<B>): KeyValueIterator<A, B> {
