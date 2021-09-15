@@ -163,15 +163,15 @@ class TestTerminals implements ITest {
     function test_groupByIndex() {
         final byParity = 0.rangeTo(5, 2).sure().map(Obj.new).groupByIndex(i -> i.val);
         final expected = [
-            Some(new List().also(l -> l.add(new Obj(0)))),
-            None,
-            Some(new List().also(l -> l.add(new Obj(2)))),
-            None,
-            Some(new List().also(l -> l.add(new Obj(4))))
+            new List().also(l -> l.add(new Obj(0))),
+            new List(),
+            new List().also(l -> l.add(new Obj(2))),
+            new List(),
+            new List().also(l -> l.add(new Obj(4)))
         ];
 
-        for (val => expectedVal in byParity.iterator().zip(expected.iterator())) {
-            Assert.isTrue(val.eqBy(expectedVal, (lhs, rhs) -> lhs.iterator().eq(rhs.iterator())));
+        for (list => expectedList in byParity.iterator().zip(expected.iterator())) {
+            Assert.isTrue(list.iterator().eq(expectedList.iterator()));
         }
     }
 
