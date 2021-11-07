@@ -25,7 +25,7 @@ class SingletonIterator<T> {
 }
 
 class SingletonIteratorTools {
-    public static inline function iter<T>(val: T): Iterator<T> {
+    public static inline function iterVal<T>(val: T): Iterator<T> {
         return new SingletonIterator(val);
     }
 }
